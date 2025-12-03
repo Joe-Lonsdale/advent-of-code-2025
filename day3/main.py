@@ -9,12 +9,8 @@ def get_biggest_jolts(num_batteries, bank):
         return sorted(bank)[-1]
     if(num_batteries == len(bank)):
         return bank
-    max = 0
-    max_i = 0
-    for i in range(len(bank) - num_batteries + 1):
-        if (int(bank[i]) > max):
-            max = int(bank[i])
-            max_i = i
+    max_n = max(bank[:len(bank) - num_batteries + 1])
+    max_i = bank.find(max_n)
     return f'{bank[max_i]}{get_biggest_jolts(num_batteries-1, bank[max_i+1:])}'
 
 def main():
